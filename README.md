@@ -11,33 +11,30 @@ This README would normally document whatever steps are necessary to get your app
 ### Installation ###
 
 * To set up package locally:
-  - clone into local catkin workspace and build using: catkin_make
+    1. Clone into local catkin workspace and build using: catkin_make
   
 * To setup USB permissions:
-  - open terminal and enter: sudo vi /etc/udev/rules.d/99-hidraw-permissions.rules
-  - when vi opens, copy and paste this command into the first line and save the file:
-  
-    KERNEL=="hidraw*", SUBSYSTEM=="hidraw", MODE="0664", GROUP="plugdev"
-
-  - exit vi after saving and restart udev using: sudo udevadm control --reload
-  - to check if the permissions have been set, open another terminal and enter: ls -al /dev/hidraw*
-  -the output should show the following:
-	
-	crw------- 1 root root    240, 0 May 23 08:43 /dev/hidraw0
-	crw-rw-r-- 1 root plugdev 240, 1 May 23 10:16 /dev/hidraw1
-	crw-rw-r-- 1 root plugdev 240, 2 May 23 10:16 /dev/hidraw2
+    1. Open terminal and enter: sudo vi /etc/udev/rules.d/99-hidraw-permissions.rules
+    2. When vi opens, copy and paste this command into the first line and save the file: 
+        **KERNEL=="hidraw*", SUBSYSTEM=="hidraw", MODE="0664", GROUP="plugdev"**
+    3. Exit vi after saving and restart udev using: **sudo udevadm control --reload**
+    4. Open another terminal and enter: **ls -al /dev/hidraw***
+    5. Output should show the following:
+    <p> crw------- 1 root root    240, 0 May 23 08:43 /dev/hidraw0 <br>
+    crw-rw-r-- 1 root plugdev 240, 1 May 23 10:16 /dev/hidraw1 <br>
+    crw-rw-r-- 1 root plugdev 240, 2 May 23 10:16 /dev/hidraw2 </p>
 	
 * Dependencies
-  - rospy
+    - rospy
 
 ### Testing ###
 
 * To test package locally:
-  - plug in USB thermometer
-  - open a terminal and start roscore
-  - open another terminal and enter: rosrun temper-ros temp_pub.py
-  - open another terminal and enter: rostopic echo /temp_data
-  - data should being printing on the rostopic terminal
+    1. Plug in USB thermometer
+    2. Open a terminal and start roscore
+    3. Open another terminal and enter: rosrun temper-ros temp_pub.py
+    4. Open another terminal and enter: rostopic echo /temp_data
+    5. Data should being printing on the rostopic terminal
 
 ### Contribution guidelines ###
 
