@@ -378,7 +378,7 @@ class Temper(object):
       return '- -'
     degC = info[name]
     #degF = degC * 1.8 + 32.0
-    return '%.2fC' % (degC)
+    return '%.2f' % (degC)
 
   def _add_humidity(self, name, info):
     '''Helper method to add the humidity to a string. If no sensor data is
@@ -407,7 +407,7 @@ class Temper(object):
       if 'error' in info:
         s = ' Error: %s' % info['error']
       else:
-        s = ' ' + self._add_temperature('internal temperature', info)
+        s = self._add_temperature('internal temperature', info)
         #s += ' ' + self._add_humidity('internal humidity', info)
         #s += ' ' + self._add_temperature('external temperature', info)
         #s += ' ' + self._add_humidity('external humidity', info)
