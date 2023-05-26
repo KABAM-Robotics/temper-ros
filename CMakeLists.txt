@@ -18,7 +18,7 @@ CATKIN_DEPENDS roscpp rospy std_msgs sensor_msgs
 )
 
 ##Install directives
- catkin_install_python(PROGRAMS
+catkin_install_python(PROGRAMS
    scripts/temp_pub.py
    DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
  )

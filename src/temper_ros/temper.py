@@ -455,10 +455,10 @@ class Temper(object):
     return data
 
 
-def main():
+def get_temperature():
   temper = Temper()
   return temper.main()
   sys.exit()
 
 if __name__ == "__main__":
-  main()
+  get_temperature()
