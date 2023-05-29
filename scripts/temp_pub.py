@@ -5,12 +5,12 @@ from temper_ros import temper
 from sensor_msgs.msg import Temperature
 
 
-def TEMPerGold_V3():
+def internal_temperature_publisher():
 
     pub = rospy.Publisher('/internal_ambient_temperature', Temperature, queue_size=10)
-    rospy.init_node('temper', anonymous=True)  
+    rospy.init_node('internal_temperature_sensor', anonymous=True)  
     msg_temp = Temperature()
-    msg_temp.header.frame_id = "temperature_sensor_link"
+    msg_temp.header.frame_id = "internal_temperature_sensor_link"
     rate = rospy.Rate(10)
     while not rospy.is_shutdown():
         try:
@@ -24,6 +24,6 @@ def TEMPerGold_V3():
 
 if __name__ == '__main__':
     try:
-        TEMPerGold_V3()
+        internal_temperature_publisher()
     except rospy.ROSInterruptException:
         pass
