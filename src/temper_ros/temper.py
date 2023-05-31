@@ -428,7 +428,7 @@ class Temper(object):
                         metavar=('VENDOR_ID:PRODUCT_ID'))
     parser.add_argument('--verbose', action='store_true',
                         help='Output binary data from thermometer')
-    args = parser.parse_args()
+    args, unknown = parser.parse_known_args()
     self.verbose = args.verbose
 
     if args.list:
@@ -452,7 +452,7 @@ class Temper(object):
     # By default, output the temperature and humidity for all known sensors.
     results = self.read(args.verbose)
     data = self.print(results, args.json)
-    return data
+    return data, args
 
 
 def get_temperature():

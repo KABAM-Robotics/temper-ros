@@ -21,6 +21,8 @@ def internal_temperature_publisher():
             rate.sleep()
         except SystemExit:
             print("Process has exited unexpectedly")
+        except TypeError:
+            print("USB Thermometer is not connected!")
 
 if __name__ == '__main__':
     try:
