@@ -1,3 +1,0 @@
-<launch>    
-  <node pkg="temper-ros" type="temper.py" name="temper_sensor_node" output="screen" />
-</launch>
