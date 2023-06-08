@@ -10,7 +10,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 #Clone develop branch of temper-ros into docker container temper-ros
-RUN git clone -b develop https://github.com/camilleconcepcion3012/temper-ros.git /home/halo_ws/src/temper-ros
+RUN git clone -b develop https://github.com/KABAM-Robotics/temper-ros.git /home/halo_ws/src/temper-ros
 
 WORKDIR /home/halo_ws
 RUN /ros_entrypoint.sh catkin_make && sed -i '$isource "/home/halo_ws/devel/setup.bash"' /ros_entrypoint.sh
