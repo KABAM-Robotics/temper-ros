@@ -15,14 +15,13 @@ def internal_temperature_publisher():
     while not rospy.is_shutdown():
         try:
             msg_temp.header.stamp = rospy.Time.now()
-            msg_temp.temperature = float(temper.get_temperature())
+            temper_data = temper.get_temperature()
+            msg_temp.temperature = float(temper_data[0])
             msg_temp.variance = 0
             pub.publish(msg_temp)
             rate.sleep()
         except SystemExit:
             print("Process has exited unexpectedly")
-        except TypeError:
-            print("USB Thermometer is not connected!")
 
 if __name__ == '__main__':
     try:
