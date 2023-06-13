@@ -15,8 +15,8 @@ def internal_temperature_publisher():
     while not rospy.is_shutdown():
         try:
             msg_temp.header.stamp = rospy.Time.now()
-            temper_data = temper.get_temperature()
-            msg_temp.temperature = float(temper_data[0])
+            sensor_data = temper.get_temperature()
+            msg_temp.temperature = float(sensor_data[0])
             msg_temp.variance = 0
             pub.publish(msg_temp)
             rate.sleep()
