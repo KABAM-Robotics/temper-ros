@@ -1,0 +1,3 @@
+<launch>    
+  <node pkg="temper-ros" type="temp_pub.py" name="temper_publisher_node" output="screen" />
+</launch>
