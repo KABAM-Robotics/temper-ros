@@ -12,7 +12,7 @@ def internal_temperature_publisher():
     msg_temp = Temperature()
     msg_temp.header.frame_id = "internal_temperature_sensor_link"
     rate = rospy.Rate(10)
-    prev_temp = 0
+    prev_temp = 0.0
 
     while not rospy.is_shutdown():
         try:
@@ -24,9 +24,9 @@ def internal_temperature_publisher():
                 prev_temp = float(sensor_data[0])
             else:
                 msg_temp.temperature = float(prev_temp)
-                rospy.loginfo("Error reading temperature, displaying previously read temperature")
+                rospy.logerr("Error reading temperature, displaying previously read temperature")
             
-            print(msg_temp)
+            rospy.logdebug(msg_temp)
             msg_temp.variance = 0
             pub.publish(msg_temp)
             rate.sleep()
