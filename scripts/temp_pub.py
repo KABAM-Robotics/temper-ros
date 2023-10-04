@@ -18,12 +18,12 @@ def internal_temperature_publisher():
         try:
             msg_temp.header.stamp = rospy.Time.now()
             sensor_data = temper.get_temperature()
-
+    
             if sensor_data is not None and sensor_data[0] is not None:
                 msg_temp.temperature = float(sensor_data[0])
-                prev_temp = float(sensor_data[0])
+                prev_temp = msg_temp.temperature
             else:
-                msg_temp.temperature = float(prev_temp)
+                msg_temp.temperature = prev_temp
                 rospy.logerr("Error reading temperature, displaying previously read temperature")
             
             rospy.logdebug(msg_temp)
