@@ -14,12 +14,12 @@ This README would normally document whatever steps are necessary to get your app
     1. Clone into local catkin workspace and build using: catkin_make
   
 * To setup USB permissions:
-    1. Open terminal and enter: **sudo vi /usr/lib/udev/rules.d/99-hidraw-permissions.rules**
+    1. Open terminal and enter: ***sudo vi /usr/lib/udev/rules.d/99-hidraw-permissions.rules***
     2. When vi opens, copy and paste this command into the first line and save the file:
      
 		**SUBSYSTEM=="hidraw*", MODE="0666", SYMLINK+="ttyTempSensor"**
         
-    3. Exit vi after saving and restart udev using: **sudo udevadm control --reload**
+    3. Exit vi after saving and restart udev using: ***sudo udevadm control --reload***
     4. Open another terminal and enter: **ls -al /dev/hidraw***
     5. Output should show the following:
     <p> crw------- 1 root root    240, 0 May 23 08:43 /dev/hidraw0 <br>
